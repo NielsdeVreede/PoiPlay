@@ -15,6 +15,41 @@
         android:layout_height="match_parent"
         tools:context=".MapsActivity" />
 
+    <com.google.android.material.circularreveal.CircularRevealRelativeLayout
+        android:id="@+id/popUpView"
+        android:layout_width="match_parent"
+        android:layout_height="383dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="2dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="350dp"
+            android:text="Areafiftyone, Klokgebouw 51"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold">
+        </TextView>
+        <TextView android:layout_height="30dp"
+            android:layout_width="">
+
+        </TextView>
+    </com.google.android.material.circularreveal.CircularRevealRelativeLayout>
+
     <com.google.android.material.textfield.TextInputEditText
         android:layout_width="317dp"
         android:layout_height="56dp"
