@@ -18,7 +18,11 @@ import android.widget.Toast
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
 import android.view.ViewGroup
 import android.view.ViewGroup.MarginLayoutParams
-
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.beust.klaxon.Klaxon
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -54,13 +58,34 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+        var listOfPOIs: List<PoiEntity>
 
-        val eindhoven = LatLng(51.441642, 5.4697225)
-        mMap.addMarker(MarkerOptions().position(eindhoven).title("Cruyff veld Eindhoven"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(eindhoven))
-        mMap.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(eindhoven, 20.0f)
-        )
+
+        val url = "http://145.93.112.214:3000/poi";
+        val queue = Volley.newRequestQueue(this)
+        val stringRequest = StringRequest(
+            Request.Method.GET, url,
+            { response ->
+                println(response)
+//                val list = Klaxon().parse<List<PoiEntity>>(response);
+//                list?.forEach {
+//                    mMap.addMarker(MarkerOptions().position(LatLng(it.latitude as Double, it.longitude as Double)).title(it.name))
+//                }
+            },
+            {  error ->
+                println(error)
+            })
+        queue.add(stringRequest)
+
+
+
+
+//        val eindhoven = LatLng(51.441642, 5.4697225)
+//        mMap.addMarker(MarkerOptions().position(eindhoven).title("Cruyff veld Eindhoven"))
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(eindhoven))
+//        mMap.animateCamera(
+//            CameraUpdateFactory.newLatLngZoom(eindhoven, 20.0f)
+//        )
         mMap.setOnMarkerClickListener { marker ->
 
             if (popUpView.visibility == View.INVISIBLE){
@@ -73,4 +98,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             false
         }
     }
+
 }
+
