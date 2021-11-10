@@ -4,6 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    android:paddingTop="30dp"
+    android:paddingBottom="44dp"
     android:background="@color/white"
     android:orientation="vertical" >
 
@@ -14,4 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".CreateEventActivity" />
+
+    <include
+        layout="@layout/text_input"/>
 </RelativeLayout>
