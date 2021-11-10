@@ -13,8 +13,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".CreateEventActivity"
-            android:exported="true">
+            android:name=".CreateEventActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -26,7 +25,6 @@
             android:name=".MapsActivity"
             android:exported="true"
             android:label="@string/title_activity_maps">
-
         </activity>
     </application>
 
