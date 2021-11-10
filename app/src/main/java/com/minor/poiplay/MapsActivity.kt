@@ -16,6 +16,8 @@ import com.minor.poiplay.databinding.ActivityMapsBinding
 import com.google.android.gms.maps.model.Marker
 import android.widget.Toast
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
+import android.view.ViewGroup
+import android.view.ViewGroup.MarginLayoutParams
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -23,7 +25,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
 
-
+    private lateinit var mapFragment: SupportMapFragment
     private lateinit var popUpView: View
     private lateinit var titleText: TextView
 
@@ -37,15 +39,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         supportActionBar?.hide();
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        val mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
+        val
 
 
         /*Initialize frontend components*/
+        mapFragment = supportFragmentManager
+            .findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
         popUpView = findViewById(R.id.popUpView)
+        popUpView.visibility = View.INVISIBLE
         titleText = findViewById(R.id.titleText)
-
     }
 
 
@@ -53,15 +56,21 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         val eindhoven = LatLng(51.441642, 5.4697225)
-        val defaultMarker = mMap.addMarker(MarkerOptions().position(eindhoven).title("Marker in Eindhoven"))
+        mMap.addMarker(MarkerOptions().position(eindhoven).title("Cruyff veld Eindhoven"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(eindhoven))
         mMap.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(eindhoven, 25.0f)
+            CameraUpdateFactory.newLatLngZoom(eindhoven, 20.0f)
         )
-        mMap.setOnMarkerClickListener( GoogleMap.OnMarkerClickListener {marker ->
+        mMap.setOnMarkerClickListener { marker ->
+
+            if (popUpView.visibility == View.INVISIBLE){
+                popUpView.visibility = View.VISIBLE
+            }
             val markerName = marker.title
-            Toast.makeText(this@MapsActivity, "Clicked location is $markerName", Toast.LENGTH_SHORT)
-                .show()
-            false})
+            titleText.text = markerName
+
+
+            false
         }
+    }
 }
