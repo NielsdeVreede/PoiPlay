@@ -22,16 +22,20 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.beust.klaxon.Klaxon
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
-
     private lateinit var mapFragment: SupportMapFragment
     private lateinit var popUpView: View
     private lateinit var titleText: TextView
+    private lateinit var attendanceText: TextView
+
+
+    private val markerList: MutableMap<String, PoiEntity> = mutableMapOf()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,9 +46,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         supportActionBar?.hide();
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        val
-
 
         /*Initialize frontend components*/
         mapFragment = supportFragmentManager
@@ -53,24 +54,26 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         popUpView = findViewById(R.id.popUpView)
         popUpView.visibility = View.INVISIBLE
         titleText = findViewById(R.id.titleText)
+        attendanceText = findViewById(R.id.attendanceText)
     }
 
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        var listOfPOIs: List<PoiEntity>
 
 
-        val url = "http://145.93.112.214:3000/poi";
+        val defaultUrl = "http://192.168.178.149:3000";
         val queue = Volley.newRequestQueue(this)
         val stringRequest = StringRequest(
-            Request.Method.GET, url,
+            Request.Method.GET, "$defaultUrl/poi",
             { response ->
-                println(response)
-//                val list = Klaxon().parse<List<PoiEntity>>(response);
-//                list?.forEach {
-//                    mMap.addMarker(MarkerOptions().position(LatLng(it.latitude as Double, it.longitude as Double)).title(it.name))
-//                }
+
+                //Convert json to list and add markers to map
+                val listOfPOIs = Json.decodeFromString<List<PoiEntity>>(response)
+                addMarkersToMap(listOfPOIs)
+
+                //Center around Eindhoven
+                centerMapAroundLatLng(LatLng(51.441642, 5.4697225))
             },
             {  error ->
                 println(error)
@@ -78,26 +81,44 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         queue.add(stringRequest)
 
 
-
-
-//        val eindhoven = LatLng(51.441642, 5.4697225)
-//        mMap.addMarker(MarkerOptions().position(eindhoven).title("Cruyff veld Eindhoven"))
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(eindhoven))
-//        mMap.animateCamera(
-//            CameraUpdateFactory.newLatLngZoom(eindhoven, 20.0f)
-//        )
         mMap.setOnMarkerClickListener { marker ->
-
             if (popUpView.visibility == View.INVISIBLE){
                 popUpView.visibility = View.VISIBLE
             }
-            val markerName = marker.title
-            titleText.text = markerName
+            titleText.text = marker.title
 
+            val customId = markerList[marker.id]?.id
+
+            val req = StringRequest(
+                Request.Method.GET, "$defaultUrl/attendance/$customId",
+                { response ->
+                    attendanceText.text = response
+                },
+                {  error ->
+                    attendanceText.text = "ERROR"
+                    println(error)
+                })
+            queue.add(req)
 
             false
         }
     }
 
+
+    private fun centerMapAroundLatLng(centerPoint: LatLng){
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(centerPoint))
+        mMap.animateCamera(
+            CameraUpdateFactory.newLatLngZoom(centerPoint, 10.0f)
+        )
+    }
+
+    private fun addMarkersToMap(listOfPOIs: List<PoiEntity>) {
+        listOfPOIs.forEach {
+            val internalId = mMap.addMarker(MarkerOptions()
+                .position(LatLng(it.latitude.toDouble(), it.longitude.toDouble()))
+                .title(it.name)).id
+            markerList[internalId] = it
+        }
+    }
 }
 

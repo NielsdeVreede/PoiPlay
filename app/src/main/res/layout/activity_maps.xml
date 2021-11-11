@@ -53,13 +53,13 @@
             android:textColor="@color/black" />
 
         <TextView
+            android:id="@+id/attendanceText"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:layout_below="@+id/titleText"
             android:layout_marginStart="18dp"
             android:layout_marginTop="12dp"
             android:layout_toEndOf="@+id/presentPeopleText"
-            android:text="17"
             android:textColor="@color/primary"
             android:textStyle="bold" />
 
