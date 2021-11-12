@@ -19,8 +19,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".CreateEventActivity"></activity>
-
         <activity
             android:name=".MapsActivity"
             android:exported="true"
