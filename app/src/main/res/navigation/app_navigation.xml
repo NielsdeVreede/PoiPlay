@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_navigation"
-    app:startDestination="@id/createEventActivity">
+    app:startDestination="@id/MainActivity">
 
     <activity
-        android:id="@+id/createEventActivity"
-        android:name="com.minor.poiplay.CreateEventActivity"
-        android:label="CreateEventActivity" />
+        android:id="@+id/MainActivity"
+        android:name="com.minor.poiplay.MainActivity"
+        android:label="MainActivity" />
+    <activity
+        android:id="@+id/mapsActivity"
+        android:name="com.minor.poiplay.MapsActivity"
+        android:label="MapsActivity" />
+    <fragment
+        android:id="@+id/testFragment"
+        android:name="com.minor.poiplay.TestFragment"
+        android:label="fragment_test"
+        tools:layout="@layout/fragment_test" />
 </navigation>
