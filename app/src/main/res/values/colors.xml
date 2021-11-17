@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="primary">#06C167</color>
-    <color name="secondary">#424242</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="secondary">#51D495</color>
+    <color name="dark_green">#036B39</color>
+    <color name="black">#272727</color>
+    <color name="white">#ffffff</color>
+    <color name="secondary_black">#424242</color>
+    <color name="grey">#C6C4C5</color>
 </resources>

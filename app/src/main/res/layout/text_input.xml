@@ -1,0 +1,21 @@
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    >
+
+    <EditText
+        style="@style/Widget.AppCompat.EditText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="Placeholder"
+        android:autoText="false"
+        android:backgroundTint="#00FFFFFF"
+        android:fontFamily="@font/mulish_regular"
+        android:paddingLeft="20dp"
+        android:paddingTop="13dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="13dp"
+        android:singleLine="true" />
+</LinearLayout >

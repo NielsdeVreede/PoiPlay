@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/homePage">
+    <fragment
+        android:id="@+id/homePage"
+        android:name="com.minor.poiplay.HomePage"
+        android:label="home_page"
+        tools:layout="@layout/home_page" >
+        <action
+            android:id="@+id/action_homePage_to_locationSearcherPage"
+            app:destination="@id/locationSearcherPage"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/locationSearcherPage"
+        android:name="com.minor.poiplay.LocationSearcherPage"
+        android:label="location_searcher_page"
+        tools:layout="@layout/location_searcher_page" >
+        <action
+            android:id="@+id/action_locationSearcherPage_to_eventOverviewPage"
+            app:destination="@id/eventOverviewPage"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventOverviewPage"
+        android:name="com.minor.poiplay.EventOverviewPage"
+        android:label="event_overview_page"
+        tools:layout="@layout/event_overview_page" />
+</navigation>
