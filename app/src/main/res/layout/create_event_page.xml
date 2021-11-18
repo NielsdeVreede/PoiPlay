@@ -11,4 +11,13 @@
     android:paddingBottom="44dp"
     tools:context=".CreateEventPage">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/mulish_bold"
+        android:textSize="30dp"
+        android:textColor="@color/black"
+        android:text="Maak een nieuw event aan"/>
+
+
 </LinearLayout>

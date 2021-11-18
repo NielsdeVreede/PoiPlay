@@ -48,11 +48,9 @@
         tools:layout="@layout/create_event_page" >
         <argument
             android:name="lat"
-            app:argType="double"
-            android:defaultValue="0" />
+            app:argType="float" />
         <argument
             android:name="long"
-            app:argType="double"
-            android:defaultValue="0" />
+            app:argType="float" />
     </fragment>
 </navigation>
