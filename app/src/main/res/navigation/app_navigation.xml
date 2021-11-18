@@ -29,10 +29,22 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_locationSearcherPage_to_createEventPage"
+            app:destination="@id/createEventPage"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/eventOverviewPage"
         android:name="com.minor.poiplay.EventOverviewPage"
         android:label=""
         tools:layout="@layout/event_overview_page" />
+    <fragment
+        android:id="@+id/createEventPage"
+        android:name="com.minor.poiplay.CreateEventPage"
+        android:label="create_event_page"
+        tools:layout="@layout/create_event_page" />
 </navigation>

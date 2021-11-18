@@ -11,5 +11,4 @@
     android:paddingBottom="44dp"
     tools:context=".CreateEventPage">
 
-    <include layout="@layout/text_input" />
 </LinearLayout>
