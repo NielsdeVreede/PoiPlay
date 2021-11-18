@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:orientation="vertical"
     android:paddingLeft="30dp"
@@ -15,9 +16,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/mulish_bold"
-        android:textSize="30dp"
+        android:text="Maak een nieuw event aan"
         android:textColor="@color/black"
-        android:text="Maak een nieuw event aan"/>
+        android:textSize="30dp" />
 
-
+    <com.minor.poiplay.TextInput
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:label="Waar vindt het event plaats?"
+        app:placeholder="Locatie" />
 </LinearLayout>
