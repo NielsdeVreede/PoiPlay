@@ -45,6 +45,5 @@
     <fragment
         android:id="@+id/createEventPage"
         android:name="com.minor.poiplay.CreateEventPage"
-        android:label="create_event_page"
         tools:layout="@layout/create_event_page" />
 </navigation>

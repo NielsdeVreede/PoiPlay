@@ -6,10 +6,6 @@
         app:fontStyle="normal"
         app:fontWeight="700" />
     <font
-        app:font="@font/mulish_bold"
-        app:fontStyle="normal"
-        app:fontWeight="700" />
-    <font
         app:font="@font/mulish_semibold"
         app:fontStyle="normal"
         app:fontWeight="600" />
