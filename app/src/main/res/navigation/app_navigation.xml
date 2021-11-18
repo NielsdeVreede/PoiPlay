@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/homePage"
         android:name="com.minor.poiplay.HomePage"
-        android:label="home_page"
+        android:label=""
         tools:layout="@layout/home_page" >
         <action
             android:id="@+id/action_homePage_to_locationSearcherPage"
@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/locationSearcherPage"
         android:name="com.minor.poiplay.LocationSearcherPage"
-        android:label="location_searcher_page"
+        android:label=""
         tools:layout="@layout/location_searcher_page" >
         <action
             android:id="@+id/action_locationSearcherPage_to_eventOverviewPage"
@@ -33,6 +33,6 @@
     <fragment
         android:id="@+id/eventOverviewPage"
         android:name="com.minor.poiplay.EventOverviewPage"
-        android:label="event_overview_page"
+        android:label=""
         tools:layout="@layout/event_overview_page" />
 </navigation>

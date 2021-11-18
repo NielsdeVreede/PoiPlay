@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:paddingLeft="30dp"
-    android:paddingTop="30dp"
+    android:paddingTop="20dp"
     android:paddingRight="30dp"
     android:paddingBottom="44dp"
     tools:context=".CreateEventPage">
