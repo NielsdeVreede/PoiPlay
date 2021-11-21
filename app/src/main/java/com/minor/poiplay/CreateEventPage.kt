@@ -12,7 +12,7 @@ class CreateEventPage : Fragment(R.layout.create_event_page) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        locationInput.setOnTextChange { text ->
+        locationInput.onTextChange = { text ->
             println(text)
         }
     }

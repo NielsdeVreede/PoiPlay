@@ -24,13 +24,9 @@ class TextInput(
         }
 
         input.doAfterTextChanged {
-            customOnChangeCallback(input.text.toString())
+            onTextChange(input.text.toString())
         }
     }
 
-    private lateinit var customOnChangeCallback : (text: String) -> Unit
-
-    fun setOnTextChange(callback: (text: String) -> Unit){
-        customOnChangeCallback = callback
-    }
+    lateinit var onTextChange : (text: String) -> Unit
 }
