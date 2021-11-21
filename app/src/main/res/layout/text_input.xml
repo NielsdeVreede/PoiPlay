@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autoText="false"
-        android:background="@drawable/border"
+        android:background="@drawable/input_border"
         android:fontFamily="@font/mulish_regular"
         android:hint="Typ hier"
         android:inputType="text"

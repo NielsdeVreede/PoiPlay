@@ -3,16 +3,18 @@ package com.minor.poiplay
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
+import androidx.core.widget.doAfterTextChanged
 import kotlinx.android.synthetic.main.text_input.view.*
 
-class TextInput (
+class TextInput(
     context: Context,
     attrs: AttributeSet
 ) : LinearLayout(context, attrs) {
     init {
         inflate(context, R.layout.text_input, this)
 
-        val customAttributesStyle = context.obtainStyledAttributes(attrs, R.styleable.text_input, 0, 0)
+        val customAttributesStyle =
+            context.obtainStyledAttributes(attrs, R.styleable.text_input, 0, 0)
 
         try {
             input_label.text = customAttributesStyle.getString(R.styleable.text_input_label)
@@ -21,5 +23,14 @@ class TextInput (
             customAttributesStyle.recycle()
         }
 
+        input.doAfterTextChanged {
+            customOnChangeCallback(input.text.toString())
+        }
+    }
+
+    private lateinit var customOnChangeCallback : (text: String) -> Unit
+
+    fun setOnTextChange(callback: (text: String) -> Unit){
+        customOnChangeCallback = callback
     }
 }
