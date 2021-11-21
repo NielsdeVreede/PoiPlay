@@ -18,7 +18,8 @@
         android:fontFamily="@font/mulish_bold"
         android:text="Maak een nieuw event aan"
         android:textColor="@color/black"
-        android:textSize="30dp" />
+        android:textSize="30dp"
+        android:layout_marginBottom="25dp"/>
 
     <com.minor.poiplay.TextInput
         android:layout_width="match_parent"
