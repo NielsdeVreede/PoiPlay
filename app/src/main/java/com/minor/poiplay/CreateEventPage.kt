@@ -15,5 +15,9 @@ class CreateEventPage : Fragment(R.layout.create_event_page) {
         locationInput.onTextChange = { text ->
             println(text)
         }
+
+        descriptionInput.onTextChange = { text ->
+            println(text)
+        }
     }
 }

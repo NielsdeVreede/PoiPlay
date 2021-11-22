@@ -27,4 +27,11 @@
         android:layout_height="wrap_content"
         app:label="Waar vindt het event plaats?"
         app:placeholder="Locatie" />
+
+    <com.minor.poiplay.TextInput
+        android:id="@+id/descriptionInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:label="Geef een beschrijving over het event?"
+        app:placeholder="Beschrijving" />
 </LinearLayout>
