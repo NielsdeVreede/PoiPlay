@@ -19,5 +19,8 @@ class CreateEventPage : Fragment(R.layout.create_event_page) {
         descriptionInput.onTextChange = { text ->
             println(text)
         }
+
+        descriptionInput.setMultiLine(true)
+        descriptionInput.setHeight(400)
     }
 }
