@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:orientation="vertical"
     android:paddingLeft="30dp"
@@ -15,11 +15,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
         android:fontFamily="@font/mulish_bold"
         android:text="Maak een nieuw event aan"
         android:textColor="@color/black"
-        android:textSize="30dp"
-        android:layout_marginBottom="25dp"/>
+        android:textSize="30dp" />
 
     <com.minor.poiplay.TextInput
         android:id="@+id/locationInput"
@@ -34,4 +34,29 @@
         android:layout_height="wrap_content"
         app:label="Geef een beschrijving over het event?"
         app:placeholder="Beschrijving" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <include layout="@layout/event_card" />
+
+            <include layout="@layout/event_card" />
+
+            <include layout="@layout/event_card" />
+
+            <include layout="@layout/event_card" />
+
+            <include layout="@layout/event_card" />
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
 </LinearLayout>
