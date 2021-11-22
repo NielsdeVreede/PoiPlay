@@ -15,5 +15,8 @@ class CreateEventPage : Fragment(R.layout.create_event_page) {
         locationInput.onTextChange = { text ->
             println(text)
         }
+
+        locationInput.setMultiLine(true)
+        locationInput.setHeight(400)
     }
 }

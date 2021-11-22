@@ -1,6 +1,7 @@
 package com.minor.poiplay
 
 import android.content.Context
+import android.text.InputType
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import androidx.core.widget.doAfterTextChanged
@@ -29,4 +30,17 @@ class TextInput(
     }
 
     lateinit var onTextChange : (text: String) -> Unit
+
+    fun setMultiLine(multiLine: Boolean){
+        if(multiLine){
+            input.setInputType(InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE)
+        }
+        else{
+            input.setInputType(InputType.TYPE_CLASS_TEXT)
+        }
+    }
+
+    fun setHeight(height: Int){
+        input.height = height
+    }
 }
