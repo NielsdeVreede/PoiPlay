@@ -1,18 +1,17 @@
-
-
-
-<merge
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <com.google.android.material.button.MaterialButton
-        style="@style/Widget.MaterialComponents.Button"
+    <Button
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/primary"
-        app:cornerRadius="16dp" />
-
-</merge>
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/mulish_semibold"
+        android:letterSpacing="0"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="15dp"
+        android:stateListAnimator="@null"
+        android:text="Ik ga hier ook naartoe"
+        android:textAllCaps="false"
+        android:textSize="16dp" />
+</LinearLayout>
