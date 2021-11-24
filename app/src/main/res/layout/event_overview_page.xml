@@ -67,7 +67,6 @@
         android:textSize="17dp" />
 
 
-
     <LinearLayout
         android:id="@+id/event_attendants_wrapper"
         android:layout_width="match_parent"
@@ -92,6 +91,14 @@
             android:text=""
             android:textColor="@color/primary"
             android:textSize="20dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/event_attendants"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
     </LinearLayout>
 
 
