@@ -14,5 +14,10 @@ class LocationSearcherPage : Fragment(R.layout.location_searcher_page) {
             val action = LocationSearcherPageDirections.actionLocationSearcherPageToEventOverviewPage()
             findNavController().navigate(action)
         }
+
+        event_creater_navigator.setOnClickListener {
+            val action = LocationSearcherPageDirections.actionLocationSearcherPageToCreateEventPage()
+            findNavController().navigate(action)
+        }
     }
 }

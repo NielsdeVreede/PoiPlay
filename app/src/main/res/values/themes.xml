@@ -4,8 +4,6 @@
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/black</item>
         <item name="colorAccent">@color/secondary</item>
-    </style>
-    <style name="HiddenTitleTheme" parent="Theme.PoiPlay">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
     </style>
