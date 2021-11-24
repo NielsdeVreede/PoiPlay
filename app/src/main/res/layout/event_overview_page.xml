@@ -104,7 +104,8 @@
                 android:id="@+id/event_attendants"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"></LinearLayout>
+                android:orientation="vertical"
+                android:layout_marginBottom="40dp"></LinearLayout>
 
             <com.minor.poiplay.Components.DefaultButton
                 android:id="@+id/join_event_button"
