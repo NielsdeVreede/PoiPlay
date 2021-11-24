@@ -10,14 +10,14 @@
     <LinearLayout
         android:id="@+id/map_layout"
         android:layout_height="match_parent"
-        android:layout_weight="1.5"
+        android:layout_weight="1.6"
         android:layout_width="match_parent">
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/google_map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".MapsActivity"
+            tools:context=".MapsPage"
             />
     </LinearLayout>
 
@@ -68,13 +68,23 @@
             android:textStyle="bold" />
 
         <Button
+            android:id="@+id/create_new_event"
+            android:layout_width="317dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="38dp"
+            android:layout_marginBottom="92dp"
+            android:text="Maak een nieuwe evenement" />
+
+        <Button
             android:id="@+id/button"
             android:layout_width="317dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="45dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginEnd="39dp"
+            android:layout_marginBottom="34dp"
             android:text="Ik ga hier ook naar toe" />
     </com.google.android.material.circularreveal.CircularRevealRelativeLayout>
 

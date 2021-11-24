@@ -17,12 +17,8 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_homePage_to_mapsActivity"
-            app:destination="@id/mapsActivity"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            android:id="@+id/action_homePage_to_mapsPickerPage"
+            app:destination="@id/mapsPickerPage" />
     </fragment>
     <fragment
         android:id="@+id/locationSearcherPage"
@@ -59,8 +55,24 @@
         android:id="@+id/newVideoPage"
         android:name="com.minor.poiplay.NewVideoPage"
         android:label="NewVideoPage" />
-    <activity
-        android:id="@+id/mapsActivity"
-        android:name="com.minor.poiplay.MapsActivity"
-        android:label="MapsActivity" />
+    <fragment
+        android:id="@+id/mapsPickerPage"
+        android:name="com.minor.poiplay.MapsPickerPage"
+        android:label=""
+        tools:layout="@layout/maps_page" >
+        <action
+            android:id="@+id/action_mapsPickerPage_to_createEventPage"
+            app:destination="@id/createEventPage"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_mapsPickerPage_to_eventOverviewPage"
+            app:destination="@id/eventOverviewPage"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
 </navigation>

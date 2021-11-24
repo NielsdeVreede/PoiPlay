@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/white"
+android:orientation="vertical" >
+    <LinearLayout
+        android:id="@+id/map_layout"
+        android:layout_width="match_parent"
+        android:layout_height="461dp"
+        android:layout_weight="1.6">
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MapsPickerPage" />
+    </LinearLayout>
+
+
+<com.google.android.material.circularreveal.CircularRevealRelativeLayout
+    android:id="@+id/popUpView"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    android:layout_weight="1"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:visibility="visible">
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="412dp"
+        android:layout_height="38dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="0dp"
+        android:text="Areafiftyone, Klokgebouw 51"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/presentPeopleText"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_below="@+id/titleText"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="13dp"
+        android:text="Aanwezige mensen"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/attendanceText"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_below="@+id/titleText"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@+id/presentPeopleText"
+        android:textColor="@color/primary"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/create_new_event"
+        android:layout_width="317dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="92dp"
+        android:text="Maak een nieuwe evenement" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="317dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="34dp"
+        android:text="Ik ga hier ook naar toe" />
+</com.google.android.material.circularreveal.CircularRevealRelativeLayout>
+
+
+
+</LinearLayout>
