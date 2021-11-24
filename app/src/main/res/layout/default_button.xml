@@ -3,16 +3,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-<<<<<<< HEAD
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@color/primary"
-        app:cornerRadius="16dp" />
-
-</merge>
-=======
     <Button
+        android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/mulish_semibold"
@@ -20,8 +12,7 @@
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
         android:stateListAnimator="@null"
-        android:text="Ik ga hier ook naartoe"
+        android:text="Klik hier"
         android:textAllCaps="false"
         android:textSize="16dp" />
 </LinearLayout>
->>>>>>> 4353698e2b96a44e3038ea399c667282797f8d6e

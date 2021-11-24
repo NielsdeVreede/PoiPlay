@@ -1,22 +1,26 @@
 package com.minor.poiplay.Components
 
 import android.content.Context
-import android.view.LayoutInflater
 import android.util.AttributeSet
-import androidx.constraintlayout.widget.ConstraintLayout
+import android.widget.LinearLayout
 import com.minor.poiplay.R
+import kotlinx.android.synthetic.main.default_button.view.*
 
-class DefaultButton @JvmOverloads constructor(
+class DefaultButton(
     context: Context,
-    attrs: AttributeSet? = null,
-    defStyle: Int = 0,
-    text: String
-) : ConstraintLayout(context, attrs, defStyle){
-
+    attrs: AttributeSet
+) : LinearLayout(context, attrs) {
     init {
-        LayoutInflater.from(context)
-            .inflate(R.layout.default_button, this, true)
+        inflate(context, R.layout.default_button, this)
+
+        button.setOnClickListener{
+            onClick()
+        }
     }
 
+    lateinit var onClick : () -> Unit
 
+    fun setText(text: String) {
+        button.text = text
+    }
 }

@@ -16,10 +16,5 @@ class HomePage : Fragment(R.layout.home_page) {
             val action = HomePageDirections.actionHomePageToLocationSearcherPage()
             findNavController().navigate(action)
         }
-
-
-        val defaultButton: DefaultButton = view.findViewById(R.id.default_button)
-        
-
     }
 }

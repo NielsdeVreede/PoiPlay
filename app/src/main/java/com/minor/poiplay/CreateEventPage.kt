@@ -22,5 +22,8 @@ class CreateEventPage : Fragment(R.layout.create_event_page) {
 
         descriptionInput.setMultiLine(true)
         descriptionInput.setHeight(400)
+
+        create_event_button.setText("Event aanmaken")
+        create_event_button.onClick = {}
     }
 }

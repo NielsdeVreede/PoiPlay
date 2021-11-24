@@ -103,11 +103,10 @@
         android:gravity="bottom"
         android:orientation="vertical">
 
-        <include
-            layout="@layout/default_button"
-            android:id="@+id/join_button"
+        <com.minor.poiplay.Components.DefaultButton
+            android:id="@+id/create_event_button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </LinearLayout>
