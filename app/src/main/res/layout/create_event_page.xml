@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,5 +11,103 @@
     android:paddingRight="30dp"
     android:paddingBottom="44dp"
     tools:context=".CreateEventPage">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:fontFamily="@font/mulish_bold"
+        android:text="Maak een nieuw event aan"
+        android:textColor="@color/black"
+        android:textSize="30dp" />
+
+    <com.minor.poiplay.TextInput
+        android:id="@+id/locationInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:label="Waar vindt het event plaats?"
+        app:placeholder="Locatie" />
+
+    <com.minor.poiplay.TextInput
+        android:id="@+id/descriptionInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:label="Geef een beschrijving over het event?"
+        app:placeholder="Beschrijving" />
+
+    <TextView
+        android:id="@+id/time_selector_input_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/mulish_semibold"
+        android:text="Hoelaat vindt het event plaats?"
+        android:textColor="@color/black"
+        android:textSize="18dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="horizontal"
+        android:weightSum="0.8">
+
+        <EditText
+            android:id="@+id/time_input_left"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:background="@drawable/input_border"
+            android:fontFamily="@font/mulish_semibold"
+            android:hint="00"
+            android:inputType="number"
+            android:paddingHorizontal="50dp"
+            android:paddingVertical="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/time_input_divider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginBottom="3dp"
+            android:fontFamily="@font/mulish_semibold"
+            android:text=":"
+            android:textColor="@color/black"
+            android:textSize="30dp" />
+
+        <EditText
+            android:id="@+id/time_input_right"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:background="@drawable/input_border"
+            android:fontFamily="@font/mulish_semibold"
+            android:hint="00"
+            android:inputType="number"
+            android:paddingHorizontal="50dp"
+            android:paddingVertical="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/default_button"
+            android:id="@+id/join_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
 </LinearLayout>

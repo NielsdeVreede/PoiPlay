@@ -16,6 +16,7 @@
         android:id="@+id/home_navigator"
         android:layout_width="203dp"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:text="Navigate"
         tools:layout_editor_absoluteX="105dp"
         tools:layout_editor_absoluteY="68dp" />
@@ -31,3 +32,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+=======
+        android:text="Navigate"/>
+</LinearLayout>
+>>>>>>> 4353698e2b96a44e3038ea399c667282797f8d6e

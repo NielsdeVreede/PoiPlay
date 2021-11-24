@@ -45,5 +45,12 @@
     <fragment
         android:id="@+id/createEventPage"
         android:name="com.minor.poiplay.CreateEventPage"
-        tools:layout="@layout/create_event_page" />
+        tools:layout="@layout/create_event_page" >
+        <argument
+            android:name="lat"
+            app:argType="float" />
+        <argument
+            android:name="long"
+            app:argType="float" />
+    </fragment>
 </navigation>
