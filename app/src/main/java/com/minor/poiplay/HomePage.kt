@@ -10,14 +10,18 @@ class HomePage : Fragment(R.layout.home_page) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val action = HomePageDirections.actionHomePageToMapsActivity()
+        findNavController().navigate(action)
+
+
         home_navigator.setOnClickListener {
             val action = HomePageDirections.actionHomePageToLocationSearcherPage()
             findNavController().navigate(action)
         }
-
-        new_video_navigator.setOnClickListener {
-            val action = HomePageDirections.actionHomePageToNewVideoPage()
-            findNavController().navigate(action)
-        }
+//
+//        new_video_navigator.setOnClickListener {
+//            val action = HomePageDirections.actionHomePageToNewVideoPage()
+//            findNavController().navigate(action)
+//        }
     }
 }

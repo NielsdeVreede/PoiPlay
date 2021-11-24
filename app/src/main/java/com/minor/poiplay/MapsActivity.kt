@@ -2,7 +2,9 @@ package com.minor.poiplay
 
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 
 import androidx.appcompat.app.AppCompatActivity
@@ -13,17 +15,13 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.minor.poiplay.databinding.ActivityMapsBinding
-import com.google.android.gms.maps.model.Marker
-import android.widget.Toast
-import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
-import android.view.ViewGroup
-import android.view.ViewGroup.MarginLayoutParams
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
+import android.widget.LinearLayout.LayoutParams as LayoutParams1
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -33,6 +31,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var popUpView: View
     private lateinit var titleText: TextView
     private lateinit var attendanceText: TextView
+    private lateinit var mapLayout: LinearLayout
 
 
     private val markerList: MutableMap<String, PoiEntity> = mutableMapOf()
@@ -49,12 +48,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         /*Initialize frontend components*/
         mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
+            .findFragmentById(R.id.google_map) as SupportMapFragment
         mapFragment.getMapAsync(this)
         popUpView = findViewById(R.id.popUpView)
         popUpView.visibility = View.INVISIBLE
         titleText = findViewById(R.id.titleText)
         attendanceText = findViewById(R.id.attendanceText)
+        mapLayout = findViewById(R.id.map_layout)
     }
 
 
@@ -62,7 +62,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
 
-        val defaultUrl = "http://192.168.178.149:3000";
+        val defaultUrl = "http://145.93.113.32:3000";
         val queue = Volley.newRequestQueue(this)
         val stringRequest = StringRequest(
             Request.Method.GET, "$defaultUrl/poi",
