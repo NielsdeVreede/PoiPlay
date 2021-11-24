@@ -13,6 +13,13 @@ class EventOverviewPage : Fragment(R.layout.event_overview_page) {
 
         var attendantsData: Array<String> = arrayOf("Dary van Sleeuwen", "Niels de Vreede", "Jeroen van Alpen", "Rick Barten", "Luuk Josephs", "Koen Rode", "Peter van der Meer")
 
+        join_event_button.onClick = {
+            //TODO - Join user to event in backend
+            println("join event")
+        }
+
+        join_event_button.setText("Ik kom naar dit event")
+
         //TODO load dynamic data from database for specific location
         event_title.text = "Groot partijtje "
         event_time_title.text = "12:30"
