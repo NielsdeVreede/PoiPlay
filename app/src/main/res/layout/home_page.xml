@@ -16,4 +16,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Navigate"/>
+    <Button
+    android:id="@+id/new_video_navigator"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Go to video recorder page"/>
 </LinearLayout>
