@@ -9,9 +9,8 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.button.MaterialButton
-        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="45dp"
         android:background="@color/primary"
         app:cornerRadius="16dp" />
 

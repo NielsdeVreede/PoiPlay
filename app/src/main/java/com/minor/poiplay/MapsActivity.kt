@@ -2,7 +2,6 @@ package com.minor.poiplay
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.TextView
 
 import androidx.appcompat.app.AppCompatActivity
@@ -13,13 +12,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.minor.poiplay.databinding.ActivityMapsBinding
-import com.google.android.gms.maps.model.Marker
-import android.widget.Toast
-import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
-import android.view.ViewGroup
-import android.view.ViewGroup.MarginLayoutParams
 import com.android.volley.Request
-import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import kotlinx.serialization.decodeFromString
