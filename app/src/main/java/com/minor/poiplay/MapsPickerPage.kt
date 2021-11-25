@@ -30,8 +30,8 @@ class MapsPickerPage : Fragment(R.layout.maps_page) {
                 val listOfPOIs = Json.decodeFromString<List<PoiEntity>>(response)
                 addMarkersToMap(listOfPOIs, googleMap)
 
-                //Center around Eindhoven
-                centerMapAroundLatLng(LatLng(51.441642, 5.4697225), googleMap)
+                val lastPOI = listOfPOIs.last()
+                centerMapAroundLatLng(LatLng(lastPOI.latitude.toDouble(), lastPOI.longitude.toDouble()), googleMap)
             },
             {  error ->
                 println(error)
