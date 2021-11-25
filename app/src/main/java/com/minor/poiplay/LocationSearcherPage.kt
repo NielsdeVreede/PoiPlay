@@ -11,7 +11,8 @@ class LocationSearcherPage : Fragment(R.layout.location_searcher_page) {
         super.onViewCreated(view, savedInstanceState)
 
         event_overview_navigator.setOnClickListener {
-            val action = LocationSearcherPageDirections.actionLocationSearcherPageToEventOverviewPage()
+            val eventID = 1 // hardcoded for local testing
+            val action = LocationSearcherPageDirections.actionLocationSearcherPageToEventOverviewPage(eventID)
             findNavController().navigate(action)
         }
 

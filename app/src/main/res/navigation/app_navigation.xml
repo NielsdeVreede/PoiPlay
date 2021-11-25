@@ -41,7 +41,11 @@
         android:id="@+id/eventOverviewPage"
         android:name="com.minor.poiplay.EventOverviewPage"
         android:label=""
-        tools:layout="@layout/event_overview_page" />
+        tools:layout="@layout/event_overview_page" >
+        <argument
+            android:name="eventID"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/createEventPage"
         android:name="com.minor.poiplay.CreateEventPage"
