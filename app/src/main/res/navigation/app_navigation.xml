@@ -10,35 +10,11 @@
         android:label=""
         tools:layout="@layout/home_page" >
         <action
-            android:id="@+id/action_homePage_to_locationSearcherPage"
-            app:destination="@id/locationSearcherPage"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-        <action
             android:id="@+id/action_homePage_to_mapsPickerPage"
             app:destination="@id/mapsPickerPage" />
-    </fragment>
-    <fragment
-        android:id="@+id/locationSearcherPage"
-        android:name="com.minor.poiplay.LocationSearcherPage"
-        android:label=""
-        tools:layout="@layout/location_searcher_page" >
         <action
-            android:id="@+id/action_locationSearcherPage_to_eventOverviewPage"
-            app:destination="@id/eventOverviewPage"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-        <action
-            android:id="@+id/action_locationSearcherPage_to_createEventPage"
-            app:destination="@id/createEventPage"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            android:id="@+id/action_homePage_to_newVideoPage"
+            app:destination="@id/newVideoPage" />
     </fragment>
     <fragment
         android:id="@+id/eventOverviewPage"
@@ -48,6 +24,9 @@
         <argument
             android:name="eventID"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_eventOverviewPage_to_mapsPickerPage"
+            app:destination="@id/mapsPickerPage" />
     </fragment>
     <fragment
         android:id="@+id/createEventPage"
@@ -59,10 +38,10 @@
         <argument
             android:name="long"
             app:argType="float" />
+        <action
+            android:id="@+id/action_createEventPage_to_mapsPickerPage"
+            app:destination="@id/mapsPickerPage" />
     </fragment>
-    <action
-        android:id="@+id/action_createEventPage_to_locationSearcherPage"
-        app:destination="@id/locationSearcherPage" />
     <fragment
         android:id="@+id/newVideoPage"
         android:name="com.minor.poiplay.NewVideoPage"
@@ -86,5 +65,8 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_mapsPickerPage_to_eventOverviewPage2"
+            app:destination="@id/eventOverviewPage" />
     </fragment>
 </navigation>

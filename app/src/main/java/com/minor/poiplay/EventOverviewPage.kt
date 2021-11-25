@@ -3,6 +3,7 @@ package com.minor.poiplay
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.minor.poiplay.Components.EventAttendant
 import kotlinx.android.synthetic.main.event_overview_page.*
@@ -17,7 +18,8 @@ class EventOverviewPage : Fragment(R.layout.event_overview_page) {
 
         join_event_button.onClick = {
             //TODO - Join user to event in backend. Use args.eventID to join user
-            println("join event")
+            val action = EventOverviewPageDirections.actionEventOverviewPageToMapsPickerPage()
+            findNavController().navigate(action)
         }
 
         join_event_button.setText("Ik kom naar dit event")

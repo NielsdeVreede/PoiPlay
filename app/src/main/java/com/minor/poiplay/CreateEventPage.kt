@@ -27,8 +27,7 @@ class CreateEventPage : Fragment(R.layout.create_event_page) {
         create_event_button.setText("Event aanmaken")
         create_event_button.onClick = {
             //TODO - API call to save created event
-
-            val action = CreateEventPageDirections.actionCreateEventPageToLocationSearcherPage()
+            val action = CreateEventPageDirections.actionCreateEventPageToMapsPickerPage()
             findNavController().navigate(action)
         }
     }
