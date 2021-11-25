@@ -1,72 +1,45 @@
 package com.minor.poiplay
 
-import android.os.Bundle
-import android.view.View
-import android.widget.TextView
+import androidx.fragment.app.Fragment
 
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.android.volley.Request
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.minor.poiplay.databinding.ActivityMapsBinding
-import com.android.volley.Request
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
+import kotlinx.android.synthetic.main.maps_page.*
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
-
-    private lateinit var mMap: GoogleMap
-    private lateinit var binding: ActivityMapsBinding
-    private lateinit var mapFragment: SupportMapFragment
-    private lateinit var popUpView: View
-    private lateinit var titleText: TextView
-    private lateinit var attendanceText: TextView
+class MapsPickerPage : Fragment() {
 
 
     private val markerList: MutableMap<String, PoiEntity> = mutableMapOf()
+    private val defaultUrl = "http://145.93.113.32:3000";
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        binding = ActivityMapsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        supportActionBar?.hide()
-
-
-        /*Initialize frontend components*/
-        mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
-        popUpView = findViewById(R.id.popUpView)
-        popUpView.visibility = View.INVISIBLE
-        titleText = findViewById(R.id.titleText)
-        attendanceText = findViewById(R.id.attendanceText)
-    }
-
-
-    override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
-
-
-        val defaultUrl = "http://192.168.178.149:3000";
-        val queue = Volley.newRequestQueue(this)
+    private val callback = OnMapReadyCallback { googleMap ->
+        val queue = Volley.newRequestQueue(requireContext())
         val stringRequest = StringRequest(
             Request.Method.GET, "$defaultUrl/poi",
             { response ->
-
                 //Convert json to list and add markers to map
                 val listOfPOIs = Json.decodeFromString<List<PoiEntity>>(response)
-                addMarkersToMap(listOfPOIs)
+                addMarkersToMap(listOfPOIs, googleMap)
 
                 //Center around Eindhoven
-                centerMapAroundLatLng(LatLng(51.441642, 5.4697225))
+                centerMapAroundLatLng(LatLng(51.441642, 5.4697225), googleMap)
             },
             {  error ->
                 println(error)
@@ -74,7 +47,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         queue.add(stringRequest)
 
 
-        mMap.setOnMarkerClickListener { marker ->
+        googleMap.setOnMarkerClickListener { marker ->
             if (popUpView.visibility == View.INVISIBLE){
                 popUpView.visibility = View.VISIBLE
             }
@@ -86,6 +59,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 Request.Method.GET, "$defaultUrl/attendance/$customId",
                 { response ->
                     attendanceText.text = response
+
                 },
                 {  error ->
                     attendanceText.text = "ERROR"
@@ -97,15 +71,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-
-    private fun centerMapAroundLatLng(centerPoint: LatLng){
+    private fun centerMapAroundLatLng(centerPoint: LatLng, mMap: GoogleMap){
         mMap.moveCamera(CameraUpdateFactory.newLatLng(centerPoint))
         mMap.animateCamera(
             CameraUpdateFactory.newLatLngZoom(centerPoint, 10.0f)
         )
     }
 
-    private fun addMarkersToMap(listOfPOIs: List<PoiEntity>) {
+    private fun addMarkersToMap(listOfPOIs: List<PoiEntity>, mMap: GoogleMap) {
         listOfPOIs.forEach {
             val internalId = mMap.addMarker(MarkerOptions()
                 .position(LatLng(it.latitude.toDouble(), it.longitude.toDouble()))
@@ -113,5 +86,29 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             markerList[internalId] = it
         }
     }
-}
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.maps_page, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
+        mapFragment?.getMapAsync(callback)
+
+
+        create_new_event.setOnClickListener {
+            findNavController().navigate(MapsPickerPageDirections.actionMapsPickerPageToCreateEventPage())
+        }
+
+
+    }
+
+
+
+
+}

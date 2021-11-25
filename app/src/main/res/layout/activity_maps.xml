@@ -7,22 +7,26 @@
     android:background="@color/white"
     android:orientation="vertical" >
 
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/map_layout"
         android:layout_height="match_parent"
-        tools:context=".MapsActivity" />
+        android:layout_weight="1.6"
+        android:layout_width="match_parent">
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/google_map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MapsPage"
+            />
+    </LinearLayout>
+
 
     <com.google.android.material.circularreveal.CircularRevealRelativeLayout
         android:id="@+id/popUpView"
         android:layout_width="match_parent"
-        android:layout_height="380dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="2dp"
+        android:layout_height="400dp"
+        android:layout_weight="1"
         android:background="@color/white"
         android:orientation="vertical"
         android:visibility="visible">
@@ -64,27 +68,37 @@
             android:textStyle="bold" />
 
         <Button
+            android:id="@+id/create_new_event"
+            android:layout_width="317dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="38dp"
+            android:layout_marginBottom="92dp"
+            android:text="Maak een nieuwe evenement" />
+
+        <Button
             android:id="@+id/button"
             android:layout_width="317dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="45dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginEnd="39dp"
+            android:layout_marginBottom="34dp"
             android:text="Ik ga hier ook naar toe" />
     </com.google.android.material.circularreveal.CircularRevealRelativeLayout>
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:layout_width="317dp"
-        android:layout_height="56dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginEnd="42dp"
-        android:background="@color/white"
-        android:hint="@string/search_a_location" />
+<!--    <com.google.android.material.textfield.TextInputEditText-->
+<!--        android:layout_width="317dp"-->
+<!--        android:layout_height="56dp"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginStart="52dp"-->
+<!--        android:layout_marginTop="42dp"-->
+<!--        android:layout_marginEnd="42dp"-->
+<!--        android:background="@color/white"-->
+<!--        android:hint="@string/search_a_location" />-->
 
 
 </LinearLayout>
