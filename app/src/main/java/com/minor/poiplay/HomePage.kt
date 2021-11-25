@@ -10,8 +10,8 @@ class HomePage : Fragment(R.layout.home_page) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        home_navigator.setOnClickListener {
-            val action = HomePageDirections.actionHomePageToLocationSearcherPage()
+        maps_picker_navigator.setOnClickListener {
+            val action = HomePageDirections.actionHomePageToMapsPickerPage()
             findNavController().navigate(action)
         }
 

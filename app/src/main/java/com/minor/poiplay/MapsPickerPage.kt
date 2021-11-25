@@ -1,17 +1,12 @@
 package com.minor.poiplay
 
-import androidx.fragment.app.Fragment
-
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.navigation.Navigation.findNavController
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -22,12 +17,9 @@ import kotlinx.android.synthetic.main.maps_page.*
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
-class MapsPickerPage : Fragment() {
-
-
+class MapsPickerPage : Fragment(R.layout.maps_page) {
     private val markerList: MutableMap<String, PoiEntity> = mutableMapOf()
-    private val defaultUrl = "http://145.93.113.32:3000";
-
+    private val defaultUrl = "http://192.168.178.63:3000";
 
     private val callback = OnMapReadyCallback { googleMap ->
         val queue = Volley.newRequestQueue(requireContext())
@@ -87,14 +79,6 @@ class MapsPickerPage : Fragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.maps_page, container, false)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
@@ -102,13 +86,14 @@ class MapsPickerPage : Fragment() {
 
 
         create_new_event.setOnClickListener {
-            findNavController().navigate(MapsPickerPageDirections.actionMapsPickerPageToCreateEventPage())
+            val lat = 51.441642f //hardcoded for local testing
+            val long = 5.4697225f //hardcoded for local testing
+            findNavController().navigate(
+                MapsPickerPageDirections.actionMapsPickerPageToCreateEventPage(
+                    1.0f,
+                    2.0f
+                )
+            )
         }
-
-
     }
-
-
-
-
 }
