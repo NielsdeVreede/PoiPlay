@@ -39,9 +39,7 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
-
     </fragment>
-
     <fragment
         android:id="@+id/eventOverviewPage"
         android:name="com.minor.poiplay.EventOverviewPage"
@@ -50,7 +48,17 @@
     <fragment
         android:id="@+id/createEventPage"
         android:name="com.minor.poiplay.CreateEventPage"
-        tools:layout="@layout/create_event_page" />
+        tools:layout="@layout/create_event_page" >
+        <argument
+            android:name="lat"
+            app:argType="float" />
+        <argument
+            android:name="long"
+            app:argType="float" />
+    </fragment>
+    <action
+        android:id="@+id/action_createEventPage_to_locationSearcherPage"
+        app:destination="@id/locationSearcherPage" />
     <fragment
         android:id="@+id/newVideoPage"
         android:name="com.minor.poiplay.NewVideoPage"

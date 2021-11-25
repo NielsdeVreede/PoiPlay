@@ -3,7 +3,6 @@ package com.minor.poiplay
 import android.app.Activity
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -22,7 +21,6 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.minor.poiplay.databinding.ActivityMapsBinding
 import com.android.volley.Request
-import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.activity_maps.*
@@ -97,9 +95,6 @@ class MapsPage : AppCompatActivity(), OnMapReadyCallback {
         queue.add(stringRequest)
 
 
-
-
-
         mMap.setOnMarkerClickListener { marker ->
             if (popUpView.visibility == View.INVISIBLE){
                 popUpView.visibility = View.VISIBLE
@@ -112,7 +107,6 @@ class MapsPage : AppCompatActivity(), OnMapReadyCallback {
                 Request.Method.GET, "$defaultUrl/attendance/$customId",
                 { response ->
                     attendanceText.text = response
-
                 },
                 {  error ->
                     attendanceText.text = "ERROR"

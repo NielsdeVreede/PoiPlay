@@ -13,7 +13,7 @@
 
     <Button
         android:id="@+id/home_navigator"
-        android:layout_width="wrap_content"
+        android:layout_width="203dp"
         android:layout_height="wrap_content"
         android:text="Navigate"/>
     <Button
