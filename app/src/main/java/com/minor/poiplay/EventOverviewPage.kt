@@ -1,20 +1,22 @@
 package com.minor.poiplay
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.minor.poiplay.Components.EventAttendant
 import kotlinx.android.synthetic.main.event_overview_page.*
 
 class EventOverviewPage : Fragment(R.layout.event_overview_page) {
+    private val args: EventOverviewPageArgs by navArgs()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var attendantsData: Array<String> = arrayOf("Dary van Sleeuwen", "Niels de Vreede", "Jeroen van Alpen", "Rick Barten", "Luuk Josephs", "Koen Rode", "Peter van der Meer")
+        val attendantsData: Array<String> = arrayOf("Dary van Sleeuwen", "Niels de Vreede", "Jeroen van Alpen", "Rick Barten", "Luuk Josephs", "Koen Rode", "Peter van der Meer")
 
         join_event_button.onClick = {
-            //TODO - Join user to event in backend
+            //TODO - Join user to event in backend. Use args.eventID to join user
             println("join event")
         }
 
