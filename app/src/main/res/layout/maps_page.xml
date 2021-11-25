@@ -17,7 +17,7 @@
             android:id="@+id/map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="fill_parent"
             tools:context=".MapsPickerPage" />
     </LinearLayout>
 
@@ -28,7 +28,7 @@
         android:layout_weight="1"
         android:background="@color/white"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/titleText"
@@ -40,7 +40,6 @@
             android:layout_marginStart="0dp"
             android:layout_marginTop="7dp"
             android:layout_marginEnd="0dp"
-            android:text="Areafiftyone, Klokgebouw 51"
             android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -52,7 +51,6 @@
             android:layout_below="@+id/titleText"
             android:layout_marginStart="10dp"
             android:layout_marginTop="13dp"
-            android:text="Aanwezige mensen"
             android:textColor="@color/black" />
 
         <TextView

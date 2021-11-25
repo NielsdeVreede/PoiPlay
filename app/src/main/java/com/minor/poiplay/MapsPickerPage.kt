@@ -19,13 +19,14 @@ import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.minor.poiplay.Components.CustomMapsLabel
 import kotlinx.android.synthetic.main.maps_page.*
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
 class MapsPickerPage : Fragment(R.layout.maps_page) {
     private val markerList: MutableMap<String, PoiEntity> = mutableMapOf()
-    private val defaultUrl = "http://192.168.178.63:3000";
+    private val defaultUrl = "http://192.168.178.64:3000";
 
     private val callback = OnMapReadyCallback { googleMap ->
         val queue = Volley.newRequestQueue(requireContext())
@@ -34,6 +35,8 @@ class MapsPickerPage : Fragment(R.layout.maps_page) {
             { response ->
                 //Convert json to list and add markers to map
                 val listOfPOIs = Json.decodeFromString<List<PoiEntity>>(response)
+
+                googleMap.setInfoWindowAdapter(getContext()?.let { CustomMapsLabel(it) })
                 addMarkersToMap(listOfPOIs, googleMap)
 
                 val lastPOI = listOfPOIs.last()
@@ -46,7 +49,7 @@ class MapsPickerPage : Fragment(R.layout.maps_page) {
 
 
         googleMap.setOnMarkerClickListener { marker ->
-            if (popUpView.visibility == View.INVISIBLE){
+            if (popUpView.visibility == View.GONE){
                 popUpView.visibility = View.VISIBLE
             }
             titleText.text = marker.title
@@ -57,7 +60,6 @@ class MapsPickerPage : Fragment(R.layout.maps_page) {
                 Request.Method.GET, "$defaultUrl/attendance/$customId",
                 { response ->
                     attendanceText.text = response
-
                 },
                 {  error ->
                     attendanceText.text = "ERROR"
@@ -72,17 +74,18 @@ class MapsPickerPage : Fragment(R.layout.maps_page) {
     private fun centerMapAroundLatLng(centerPoint: LatLng, mMap: GoogleMap){
         mMap.moveCamera(CameraUpdateFactory.newLatLng(centerPoint))
         mMap.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(centerPoint, 10.0f)
+            CameraUpdateFactory.newLatLngZoom(centerPoint, 15.5f)
         )
     }
 
     private fun addMarkersToMap(listOfPOIs: List<PoiEntity>, mMap: GoogleMap) {
         listOfPOIs.forEach {
-            val internalId = mMap.addMarker(MarkerOptions()
+            val marker = mMap.addMarker(MarkerOptions()
                 .position(LatLng(it.latitude.toDouble(), it.longitude.toDouble()))
                 .icon(getContext()?.let { it1 -> bitmapDescriptorFromVector(it1, R.drawable.soccer_location_icon) })
-                .title(it.name)).id
-            markerList[internalId] = it
+                .title(it.name))
+            marker.showInfoWindow()
+            markerList[marker.id] = it
         }
     }
 
@@ -99,7 +102,6 @@ class MapsPickerPage : Fragment(R.layout.maps_page) {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
-
 
         create_new_event.setOnClickListener {
             val lat = 51.441642f //hardcoded for local testing
