@@ -82,7 +82,7 @@ class MapsPickerPage : Fragment(R.layout.maps_page) {
         listOfPOIs.forEach {
             val marker = mMap.addMarker(MarkerOptions()
                 .position(LatLng(it.latitude.toDouble(), it.longitude.toDouble()))
-                .icon(getContext()?.let { it1 -> bitmapDescriptorFromVector(it1, R.drawable.soccer_location_icon) })
+                .icon(getContext()?.let { it1 -> bitmapDescriptorFromVector(it1, R.drawable.soccer_location_marker) })
                 .title(it.name))
             marker.showInfoWindow()
             markerList[marker.id] = it
