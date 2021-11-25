@@ -69,7 +69,7 @@
             app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_mapsPickerPage_to_eventOverviewPage"
-            app:destination="@id/eventOverviewPage"
+            app:destination="@id/createEventPage"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
