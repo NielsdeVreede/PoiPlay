@@ -16,7 +16,7 @@ class HomePage : Fragment(R.layout.home_page) {
         }
 
         new_video_navigator.setOnClickListener {
-            val action = HomePageDirections.actionHomePageToMapsPickerPage()
+            val action = HomePageDirections.actionHomePageToNewVideoPage()
             findNavController().navigate(action)
         }
     }
