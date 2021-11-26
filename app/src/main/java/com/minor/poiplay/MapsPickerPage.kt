@@ -77,6 +77,18 @@ class MapsPickerPage : Fragment(R.layout.maps_page) {
                 queue.add(req)
             }
 
+
+            create_new_event.setOnClickListener {
+                val lat = 51.441642f //hardcoded for local testing
+                val long = 5.4697225f //hardcoded for local testing
+                findNavController().navigate(
+                    MapsPickerPageDirections.actionMapsPickerPageToCreateEventPage(
+                        1.0f,
+                        2.0f,
+                        customId
+                    )
+                )
+            }
             false
         }
     }
@@ -127,15 +139,6 @@ class MapsPickerPage : Fragment(R.layout.maps_page) {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
 
-        create_new_event.setOnClickListener {
-            val lat = 51.441642f //hardcoded for local testing
-            val long = 5.4697225f //hardcoded for local testing
-            findNavController().navigate(
-                MapsPickerPageDirections.actionMapsPickerPageToCreateEventPage(
-                    1.0f,
-                    2.0f
-                )
-            )
-        }
+
     }
 }

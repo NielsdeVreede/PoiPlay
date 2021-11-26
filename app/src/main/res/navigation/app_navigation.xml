@@ -38,6 +38,9 @@
         <argument
             android:name="long"
             app:argType="float" />
+        <argument
+            android:name="poi_id"
+            app:argType="integer"/>
         <action
             android:id="@+id/action_createEventPage_to_mapsPickerPage"
             app:destination="@id/mapsPickerPage" />
