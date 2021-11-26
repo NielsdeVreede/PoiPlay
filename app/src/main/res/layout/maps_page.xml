@@ -65,6 +65,16 @@
             android:textStyle="bold" />
 
         <Button
+            android:id="@+id/view_video_feed"
+            android:layout_width="317dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="38dp"
+            android:layout_marginBottom="150dp"
+            android:text="Zie video feed" />
+
+        <Button
             android:id="@+id/create_new_event"
             android:layout_width="317dp"
             android:layout_height="wrap_content"
@@ -75,7 +85,7 @@
             android:text="Maak een nieuwe evenement" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/attend_button"
             android:layout_width="317dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"

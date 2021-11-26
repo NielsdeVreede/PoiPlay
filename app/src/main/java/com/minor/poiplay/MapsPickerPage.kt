@@ -9,6 +9,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -23,13 +25,16 @@ import com.minor.poiplay.Components.CustomMapsLabel
 import kotlinx.android.synthetic.main.maps_page.*
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
+import org.json.JSONObject
 
 class MapsPickerPage : Fragment(R.layout.maps_page) {
     private val markerList: MutableMap<String, PoiEntity> = mutableMapOf()
-    private val defaultUrl = "http://192.168.178.64:3000";
+    private val defaultUrl = "http://192.168.178.149:3000";
+    private lateinit var queue: RequestQueue;
+
 
     private val callback = OnMapReadyCallback { googleMap ->
-        val queue = Volley.newRequestQueue(requireContext())
+        queue = Volley.newRequestQueue(requireContext())
         val stringRequest = StringRequest(
             Request.Method.GET, "$defaultUrl/poi",
             { response ->
@@ -54,22 +59,41 @@ class MapsPickerPage : Fragment(R.layout.maps_page) {
             }
             titleText.text = marker.title
 
-            val customId = markerList[marker.id]?.id
+            val customId = markerList[marker.id]?.id as Int
+            updateAttendance(customId)
 
-            val req = StringRequest(
-                Request.Method.GET, "$defaultUrl/attendance/$customId",
-                { response ->
-                    attendanceText.text = response
-                },
-                {  error ->
-                    attendanceText.text = "ERROR"
-                    println(error)
-                })
-            queue.add(req)
+            attend_button.setOnClickListener {
+                val params = HashMap<String,String>()
+                params["poi_id"] = customId.toString()
+                val jsonObject = JSONObject(params as Map<*, *>)
+                val req = JsonObjectRequest(
+                    Request.Method.POST,"$defaultUrl/attendance", jsonObject,
+                    { response ->
+                        updateAttendance(customId)
+                    },
+                    { error ->
+                        updateAttendance(customId)
+                    })
+                queue.add(req)
+            }
 
             false
         }
     }
+
+    private fun updateAttendance(poi_id: Int) {
+        val req = StringRequest(
+            Request.Method.GET, "$defaultUrl/attendance/$poi_id",
+            { response ->
+                attendanceText.text = response
+            },
+            {  error ->
+                attendanceText.text = "ERROR"
+                println(error)
+            })
+        queue.add(req)
+    }
+
 
     private fun centerMapAroundLatLng(centerPoint: LatLng, mMap: GoogleMap){
         mMap.moveCamera(CameraUpdateFactory.newLatLng(centerPoint))
