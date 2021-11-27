@@ -89,6 +89,10 @@ class MapsPickerPage : Fragment(R.layout.maps_page) {
                     )
                 )
             }
+
+            view_video_feed.setOnClickListener {
+                findNavController().navigate(MapsPickerPageDirections.actionMapsPickerPageToNewVideoPage(customId, markerList[marker.id]?.name.toString()))
+            }
             false
         }
     }

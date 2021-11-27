@@ -47,8 +47,14 @@
     </fragment>
     <fragment
         android:id="@+id/newVideoPage"
-        android:name="com.minor.poiplay.NewVideoPage"
-        android:label="NewVideoPage" />
+        android:name="com.minor.poiplay.NewVideoPage">
+        <argument
+            android:name="poi_id"
+            app:argType="integer"/>
+        <argument
+            android:name="name"
+            app:argType="string"/>
+    </fragment>
     <fragment
         android:id="@+id/mapsPickerPage"
         android:name="com.minor.poiplay.MapsPickerPage"
