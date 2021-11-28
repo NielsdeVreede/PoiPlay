@@ -31,7 +31,8 @@ class MapsPickerPage : Fragment(R.layout.maps_page) {
     private val markerList: MutableMap<String, PoiEntity> = mutableMapOf()
     private val defaultUrl = "http://192.168.178.149:3000";
     private lateinit var queue: RequestQueue;
-
+    private var clickedLocationLat = 0.0f;
+    private var clickedLocationLong = 0.0f;
 
     private val callback = OnMapReadyCallback { googleMap ->
         queue = Volley.newRequestQueue(requireContext())
@@ -45,29 +46,36 @@ class MapsPickerPage : Fragment(R.layout.maps_page) {
                 addMarkersToMap(listOfPOIs, googleMap)
 
                 val lastPOI = listOfPOIs.last()
-                centerMapAroundLatLng(LatLng(lastPOI.latitude.toDouble(), lastPOI.longitude.toDouble()), googleMap)
+                centerMapAroundLatLng(
+                    LatLng(
+                        lastPOI.latitude.toDouble(),
+                        lastPOI.longitude.toDouble()
+                    ), googleMap
+                )
             },
-            {  error ->
+            { error ->
                 println(error)
             })
         queue.add(stringRequest)
 
 
         googleMap.setOnMarkerClickListener { marker ->
-            if (popUpView.visibility == View.GONE){
-                popUpView.visibility = View.VISIBLE
+            if (popup_view.visibility == View.GONE) {
+                popup_view.visibility = View.VISIBLE
             }
-            titleText.text = marker.title
+            location_title.text = marker.title
+            clickedLocationLat = marker.position.latitude.toFloat()
+            clickedLocationLong = marker.position.longitude.toFloat()
 
             val customId = markerList[marker.id]?.id as Int
             updateAttendance(customId)
 
-            attend_button.setOnClickListener {
-                val params = HashMap<String,String>()
+            attend_button.onClick = {
+                val params = HashMap<String, String>()
                 params["poi_id"] = customId.toString()
                 val jsonObject = JSONObject(params as Map<*, *>)
                 val req = JsonObjectRequest(
-                    Request.Method.POST,"$defaultUrl/attendance", jsonObject,
+                    Request.Method.POST, "$defaultUrl/attendance", jsonObject,
                     { response ->
                         updateAttendance(customId)
                     },
@@ -77,22 +85,24 @@ class MapsPickerPage : Fragment(R.layout.maps_page) {
                 queue.add(req)
             }
 
-
-            create_new_event.setOnClickListener {
-                val lat = 51.441642f //hardcoded for local testing
-                val long = 5.4697225f //hardcoded for local testing
+            create_event_button.setOnClickListener {
                 findNavController().navigate(
                     MapsPickerPageDirections.actionMapsPickerPageToCreateEventPage(
-                        1.0f,
-                        2.0f,
+                        clickedLocationLat,
+                        clickedLocationLong,
                         customId
                     )
                 )
             }
 
-            view_video_feed.setOnClickListener {
-                findNavController().navigate(MapsPickerPageDirections.actionMapsPickerPageToNewVideoPage(customId, markerList[marker.id]?.name.toString()))
-            }
+//            view_video_feed.setOnClickListener {
+//                findNavController().navigate(
+//                    MapsPickerPageDirections.actionMapsPickerPageToNewVideoPage(
+//                        customId,
+//                        markerList[marker.id]?.name.toString()
+//                    )
+//                )
+//            }
             false
         }
     }
@@ -101,17 +111,17 @@ class MapsPickerPage : Fragment(R.layout.maps_page) {
         val req = StringRequest(
             Request.Method.GET, "$defaultUrl/attendance/$poi_id",
             { response ->
-                attendanceText.text = response
+                present_people_text.text = response
             },
-            {  error ->
-                attendanceText.text = "ERROR"
+            { error ->
+                present_people_text.text = "ERROR"
                 println(error)
             })
         queue.add(req)
     }
 
 
-    private fun centerMapAroundLatLng(centerPoint: LatLng, mMap: GoogleMap){
+    private fun centerMapAroundLatLng(centerPoint: LatLng, mMap: GoogleMap) {
         mMap.moveCamera(CameraUpdateFactory.newLatLng(centerPoint))
         mMap.animateCamera(
             CameraUpdateFactory.newLatLngZoom(centerPoint, 15.5f)
@@ -120,10 +130,17 @@ class MapsPickerPage : Fragment(R.layout.maps_page) {
 
     private fun addMarkersToMap(listOfPOIs: List<PoiEntity>, mMap: GoogleMap) {
         listOfPOIs.forEach {
-            val marker = mMap.addMarker(MarkerOptions()
-                .position(LatLng(it.latitude.toDouble(), it.longitude.toDouble()))
-                .icon(getContext()?.let { it1 -> bitmapDescriptorFromVector(it1, R.drawable.soccer_location_marker) })
-                .title(it.name))
+            val marker = mMap.addMarker(
+                MarkerOptions()
+                    .position(LatLng(it.latitude.toDouble(), it.longitude.toDouble()))
+                    .icon(getContext()?.let { it1 ->
+                        bitmapDescriptorFromVector(
+                            it1,
+                            R.drawable.soccer_location_marker
+                        )
+                    })
+                    .title(it.name)
+            )
             marker.showInfoWindow()
             markerList[marker.id] = it
         }
@@ -132,7 +149,8 @@ class MapsPickerPage : Fragment(R.layout.maps_page) {
     private fun bitmapDescriptorFromVector(context: Context, vectorResId: Int): BitmapDescriptor? {
         return ContextCompat.getDrawable(context, vectorResId)?.run {
             setBounds(0, 0, intrinsicWidth, intrinsicHeight)
-            val bitmap = Bitmap.createBitmap(intrinsicWidth, intrinsicHeight, Bitmap.Config.ARGB_8888)
+            val bitmap =
+                Bitmap.createBitmap(intrinsicWidth, intrinsicHeight, Bitmap.Config.ARGB_8888)
             draw(Canvas(bitmap))
             BitmapDescriptorFactory.fromBitmap(bitmap)
         }
@@ -143,6 +161,6 @@ class MapsPickerPage : Fragment(R.layout.maps_page) {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
 
-
+        attend_button.setText("Ik ga hier ook naar toe")
     }
 }
