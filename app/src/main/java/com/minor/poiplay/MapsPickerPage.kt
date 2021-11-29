@@ -35,6 +35,7 @@ class MapsPickerPage : Fragment(R.layout.maps_page) {
     private var clickedLocationLong = 0.0f;
 
     private val callback = OnMapReadyCallback { googleMap ->
+        println(defaultUrl)
         queue = Volley.newRequestQueue(requireContext())
         val stringRequest = StringRequest(
             Request.Method.GET, "$defaultUrl/poi",

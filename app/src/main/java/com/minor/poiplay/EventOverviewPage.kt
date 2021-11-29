@@ -40,10 +40,22 @@ class EventOverviewPage : Fragment(R.layout.event_overview_page) {
         join_event_button.setText("Ik kom naar dit event")
 
         //TODO load dynamic data from database for specific location
-        val stringRequest = StringRequest(
-            Request.Method.GET, "$defaultUrl/poi",
+        val poiRequest = StringRequest(
+            Request.Method.GET, "$defaultUrl/poi/${args.poiId}",
             { response ->
                 poi = Json.decodeFromString(response)
+                println("^" + poi)
+
+            },
+            {  error ->
+                println(error)
+            })
+        queue.add(poiRequest)
+        val stringRequest = StringRequest(
+            Request.Method.GET, "$defaultUrl/event/info/${args.eventID}",
+            { response ->
+                event = Json.decodeFromString(response)
+                println("^" + event)
             },
             {  error ->
                 println(error)
@@ -52,12 +64,11 @@ class EventOverviewPage : Fragment(R.layout.event_overview_page) {
 
 
 
-
-        event_title.text = "Groot partijtje "
-        event_time_title.text = "12:30"
-        event_location_title.text = "Voetbalveld, Voskuilen 2A"
-        event_description.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dui felis, imperdiet eu urna ut, malesuada tempus ligula"
-        event_attendant_number.text = "7"
+//        event_title.text = event.name
+//        event_time_title.text = event.time
+//        event_location_title.text = poi.name
+//        event_description.text = event.name
+//        event_attendant_number.text = event.attendees.size.toString()
 
         for(attendant in attendantsData){
             val attendant = EventAttendant(getContext(), null, attendant)

@@ -24,6 +24,9 @@
         <argument
             android:name="eventID"
             app:argType="integer" />
+        <argument
+            android:name="poiId"
+            app:argType="integer" />
         <action
             android:id="@+id/action_eventOverviewPage_to_mapsPickerPage"
             app:destination="@id/mapsPickerPage" />
