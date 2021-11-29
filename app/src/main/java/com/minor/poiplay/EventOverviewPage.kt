@@ -15,6 +15,7 @@ import com.minor.poiplay.Components.EventAttendant
 import kotlinx.android.synthetic.main.event_overview_page.*
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
+import java.util.*
 
 class EventOverviewPage : Fragment(R.layout.event_overview_page) {
     private val args: EventOverviewPageArgs by navArgs()
@@ -39,23 +40,31 @@ class EventOverviewPage : Fragment(R.layout.event_overview_page) {
 
         join_event_button.setText("Ik kom naar dit event")
 
-        //TODO load dynamic data from database for specific location
+
         val poiRequest = StringRequest(
             Request.Method.GET, "$defaultUrl/poi/${args.poiID}",
             { response ->
                 poi = Json.decodeFromString(response)
-                println("^" + poi)
-
+                event_location_title.text = poi.name
             },
             {  error ->
                 println(error)
             })
         queue.add(poiRequest)
+
         val stringRequest = StringRequest(
             Request.Method.GET, "$defaultUrl/event/info/${args.eventID}",
             { response ->
                 event = Json.decodeFromString(response)
-                println("^" + event)
+                event_title.text = event.name
+                event_time_title.text = "  " + event.time.substring(11,13) + ":" + event.time.substring(14,16)
+                event_description.text = event.name
+                event_attendant_number.text = event.attendees.size.toString()
+
+                for(attendant in event.attendees) {
+                    val att = EventAttendant(getContext(), null, attendant.name)
+                    event_attendants.addView(att)
+                }
             },
             {  error ->
                 println(error)
@@ -64,15 +73,5 @@ class EventOverviewPage : Fragment(R.layout.event_overview_page) {
 
 
 
-//        event_title.text = event.name
-//        event_time_title.text = event.time
-//        event_location_title.text = poi.name
-//        event_description.text = event.name
-//        event_attendant_number.text = event.attendees.size.toString()
-
-        for(attendant in attendantsData){
-            val attendant = EventAttendant(getContext(), null, attendant)
-            event_attendants.addView(attendant)
-        }
     }
 }

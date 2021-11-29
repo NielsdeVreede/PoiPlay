@@ -7,5 +7,6 @@ data class AttendantEntity(
     val id: Int,
     val poi_id: Int,
     val name: String,
-    val date: String
+    val date: String,
+    val event_id: Int
 ): java.io.Serializable
