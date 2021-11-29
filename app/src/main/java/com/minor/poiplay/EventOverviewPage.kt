@@ -11,6 +11,9 @@ import kotlinx.android.synthetic.main.event_overview_page.*
 class EventOverviewPage : Fragment(R.layout.event_overview_page) {
     private val args: EventOverviewPageArgs by navArgs()
 
+    private lateinit var poi: PoiEntity;
+    private lateinit var event: EventEntity;
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
