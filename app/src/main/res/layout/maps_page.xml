@@ -28,7 +28,7 @@
         android:orientation="vertical"
         android:paddingHorizontal="20dp"
         android:paddingTop="15dp"
-        android:paddingBottom="35dp"
+        android:paddingBottom="25dp"
         android:visibility="gone">
 
         <TextView
@@ -69,7 +69,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -94,7 +94,6 @@
                 android:layout_gravity="center"
                 android:background="@drawable/circle_button"
                 android:stateListAnimator="@null" />
-
         </LinearLayout>
 
         <!--        <Button-->
@@ -106,6 +105,31 @@
         <!--            android:layout_marginEnd="38dp"-->
         <!--            android:layout_marginBottom="150dp"-->
         <!--            android:text="Zie video feed" />-->
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="45dp"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <include layout="@layout/event_card" />
+
+                <include layout="@layout/event_card" />
+
+                <include layout="@layout/event_card" />
+
+                <include layout="@layout/event_card" />
+
+                <include layout="@layout/event_card" />
+            </LinearLayout>
+
+        </HorizontalScrollView>
 
         <com.minor.poiplay.Components.DefaultButton
             android:id="@+id/attend_button"
