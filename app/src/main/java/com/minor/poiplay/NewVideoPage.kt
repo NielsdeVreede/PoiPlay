@@ -26,7 +26,7 @@ import org.json.JSONObject
 class NewVideoPage : Fragment(R.layout.new_video_page) {
     private val args: NewVideoPageArgs by navArgs()
 
-    private val defaultUrl = "http://192.168.178.149:3000";
+    private val defaultUrl = SettingsFactory.getDefaultUrl()
     private lateinit var queue: RequestQueue;
 
 

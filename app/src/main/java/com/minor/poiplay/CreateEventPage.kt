@@ -1,6 +1,7 @@
 package com.minor.poiplay
 
 import android.os.Bundle
+import android.provider.Settings
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -17,7 +18,7 @@ import kotlin.collections.HashMap
 class CreateEventPage : Fragment(R.layout.create_event_page) {
     private val args: CreateEventPageArgs by navArgs()
 
-    private val defaultUrl = "http://192.168.178.149:3000";
+    private val defaultUrl = SettingsFactory.getDefaultUrl()
     private lateinit var queue: RequestQueue;
 
     private var location: String = ""

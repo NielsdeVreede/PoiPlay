@@ -29,7 +29,7 @@ import org.json.JSONObject
 
 class MapsPickerPage : Fragment(R.layout.maps_page) {
     private val markerList: MutableMap<String, PoiEntity> = mutableMapOf()
-    private val defaultUrl = "http://145.93.140.90:3000";
+    private val defaultUrl = SettingsFactory.getDefaultUrl()
     private lateinit var queue: RequestQueue;
     private var clickedLocationLat = 0.0f;
     private var clickedLocationLong = 0.0f;
