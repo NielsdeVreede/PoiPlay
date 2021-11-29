@@ -8,7 +8,7 @@
         android:id="@+id/homePage"
         android:name="com.minor.poiplay.HomePage"
         android:label=""
-        tools:layout="@layout/home_page" >
+        tools:layout="@layout/home_page">
         <action
             android:id="@+id/action_homePage_to_mapsPickerPage"
             app:destination="@id/mapsPickerPage" />
@@ -20,12 +20,12 @@
         android:id="@+id/eventOverviewPage"
         android:name="com.minor.poiplay.EventOverviewPage"
         android:label=""
-        tools:layout="@layout/event_overview_page" >
+        tools:layout="@layout/event_overview_page">
         <argument
             android:name="eventID"
             app:argType="integer" />
         <argument
-            android:name="poiId"
+            android:name="poiID"
             app:argType="integer" />
         <action
             android:id="@+id/action_eventOverviewPage_to_mapsPickerPage"
@@ -34,7 +34,7 @@
     <fragment
         android:id="@+id/createEventPage"
         android:name="com.minor.poiplay.CreateEventPage"
-        tools:layout="@layout/create_event_page" >
+        tools:layout="@layout/create_event_page">
         <argument
             android:name="lat"
             app:argType="float" />
@@ -43,7 +43,7 @@
             app:argType="float" />
         <argument
             android:name="poi_id"
-            app:argType="integer"/>
+            app:argType="integer" />
         <action
             android:id="@+id/action_createEventPage_to_mapsPickerPage"
             app:destination="@id/mapsPickerPage" />
@@ -53,33 +53,30 @@
         android:name="com.minor.poiplay.NewVideoPage">
         <argument
             android:name="poi_id"
-            app:argType="integer"/>
+            app:argType="integer" />
         <argument
             android:name="name"
-            app:argType="string"/>
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/mapsPickerPage"
         android:name="com.minor.poiplay.MapsPickerPage"
         android:label=""
-        tools:layout="@layout/maps_page" >
+        tools:layout="@layout/maps_page">
         <action
             android:id="@+id/action_mapsPickerPage_to_createEventPage"
             app:destination="@id/createEventPage"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_mapsPickerPage_to_eventOverviewPage"
-            app:destination="@id/createEventPage"
+            app:destination="@id/eventOverviewPage"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
-        <action
-            android:id="@+id/action_mapsPickerPage_to_eventOverviewPage2"
-            app:destination="@id/eventOverviewPage" />
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_mapsPickerPage_to_newVideoPage"
             app:destination="@id/newVideoPage" />

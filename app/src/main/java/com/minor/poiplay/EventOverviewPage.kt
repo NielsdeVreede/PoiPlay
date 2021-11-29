@@ -41,7 +41,7 @@ class EventOverviewPage : Fragment(R.layout.event_overview_page) {
 
         //TODO load dynamic data from database for specific location
         val poiRequest = StringRequest(
-            Request.Method.GET, "$defaultUrl/poi/${args.poiId}",
+            Request.Method.GET, "$defaultUrl/poi/${args.poiID}",
             { response ->
                 poi = Json.decodeFromString(response)
                 println("^" + poi)

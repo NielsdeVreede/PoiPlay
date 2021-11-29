@@ -15,9 +15,16 @@ class EventCard (
 ) : LinearLayout(context, attrs) {
     init {
         inflate(context, R.layout.event_card, this)
-
         amount_of_attendants_title.text = amountOfAttendants.toString() + " aanwezig"
         event_card_title.text = eventTitle
         event_card_time.text = eventTime
+
+        this.isClickable = true
+
+        event_card_wrapper.setOnClickListener {
+            onClick()
+        }
     }
+
+    lateinit var onClick : () -> Unit
 }
