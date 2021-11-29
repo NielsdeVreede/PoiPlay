@@ -3,19 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_navigation"
-    app:startDestination="@id/homePage">
-    <fragment
-        android:id="@+id/homePage"
-        android:name="com.minor.poiplay.HomePage"
-        android:label=""
-        tools:layout="@layout/home_page">
-        <action
-            android:id="@+id/action_homePage_to_mapsPickerPage"
-            app:destination="@id/mapsPickerPage" />
-        <action
-            android:id="@+id/action_homePage_to_newVideoPage"
-            app:destination="@id/newVideoPage" />
-    </fragment>
+    app:startDestination="@id/mapsPickerPage">
     <fragment
         android:id="@+id/eventOverviewPage"
         android:name="com.minor.poiplay.EventOverviewPage"

@@ -21,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/navigation_toolbar"
+        android:layout_marginTop="-2dp"
         app:defaultNavHost="true"
         app:navGraph="@navigation/app_navigation" />
 </RelativeLayout>
