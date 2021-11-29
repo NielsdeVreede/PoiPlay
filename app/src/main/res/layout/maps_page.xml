@@ -27,8 +27,8 @@
         android:background="@drawable/location_popup"
         android:orientation="vertical"
         android:paddingHorizontal="20dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="25dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
         android:visibility="gone">
 
         <TextView
@@ -114,19 +114,10 @@
             android:scrollbars="none">
 
             <LinearLayout
+                android:id="@+id/events_scrollview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
-                <include layout="@layout/event_card" />
-
-                <include layout="@layout/event_card" />
-
-                <include layout="@layout/event_card" />
-
-                <include layout="@layout/event_card" />
-
-                <include layout="@layout/event_card" />
             </LinearLayout>
 
         </HorizontalScrollView>

@@ -22,6 +22,9 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.minor.poiplay.Components.CustomMapsLabel
+import com.minor.poiplay.Components.EventAttendant
+import com.minor.poiplay.Components.EventCard
+import kotlinx.android.synthetic.main.event_overview_page.*
 import kotlinx.android.synthetic.main.maps_page.*
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
@@ -74,7 +77,16 @@ class MapsPickerPage : Fragment(R.layout.maps_page) {
             val getPOIEventsRequest = StringRequest(
                 Request.Method.GET, "$defaultUrl/event/poi/$customId",
                 { response ->
+                    println("--------------")
+
                     println(response)
+                    println("--------------")
+                    val eventCards = Json.decodeFromString<List<EventEntity>>(response)
+
+                    for(event in eventCards){
+                        val eventCard = EventCard(getContext(), null, 12, "Groot partijtje", "12:30")
+                        events_scrollview.addView(eventCard)
+                    }
                 },
                 { error ->
                     println(error)

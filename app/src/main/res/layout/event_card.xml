@@ -6,7 +6,7 @@
     android:layout_marginRight="15dp">
 
     <TextView
-        android:id="@+id/event_card_present_title"
+        android:id="@+id/amount_of_attendants_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="6dp"
