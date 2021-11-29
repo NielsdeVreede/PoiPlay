@@ -29,7 +29,7 @@ import org.json.JSONObject
 
 class MapsPickerPage : Fragment(R.layout.maps_page) {
     private val markerList: MutableMap<String, PoiEntity> = mutableMapOf()
-    private val defaultUrl = "http://192.168.178.149:3000";
+    private val defaultUrl = "http://145.93.140.90:3000";
     private lateinit var queue: RequestQueue;
     private var clickedLocationLat = 0.0f;
     private var clickedLocationLong = 0.0f;
@@ -69,6 +69,16 @@ class MapsPickerPage : Fragment(R.layout.maps_page) {
 
             val customId = markerList[marker.id]?.id as Int
             updateAttendance(customId)
+
+            val getPOIEventsRequest = StringRequest(
+                Request.Method.GET, "$defaultUrl/event/poi/$customId",
+                { response ->
+                    println(response)
+                },
+                { error ->
+                    println(error)
+                })
+            queue.add(getPOIEventsRequest)
 
             attend_button.onClick = {
                 val params = HashMap<String, String>()
@@ -119,7 +129,6 @@ class MapsPickerPage : Fragment(R.layout.maps_page) {
             })
         queue.add(req)
     }
-
 
     private fun centerMapAroundLatLng(centerPoint: LatLng, mMap: GoogleMap) {
         mMap.moveCamera(CameraUpdateFactory.newLatLng(centerPoint))

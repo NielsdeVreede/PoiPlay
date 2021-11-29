@@ -29,14 +29,14 @@
         android:paddingHorizontal="20dp"
         android:paddingTop="15dp"
         android:paddingBottom="35dp"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/location_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/mulish_bold"
-            android:text="Voetbalveld, Voskuilen 2A"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="24sp" />
 
@@ -92,9 +92,10 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:background="@drawable/circle_button" />
-        </LinearLayout>
+                android:background="@drawable/circle_button"
+                android:stateListAnimator="@null" />
 
+        </LinearLayout>
 
         <!--        <Button-->
         <!--            android:id="@+id/view_video_feed"-->
