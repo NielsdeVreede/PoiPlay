@@ -34,6 +34,7 @@ class MapsPickerPage : Fragment(R.layout.maps_page) {
 
 
     private val callback = OnMapReadyCallback { googleMap ->
+        println(defaultUrl)
         queue = Volley.newRequestQueue(requireContext())
         val stringRequest = StringRequest(
             Request.Method.GET, "$defaultUrl/poi",
@@ -143,6 +144,7 @@ class MapsPickerPage : Fragment(R.layout.maps_page) {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
 
-
+        val action = MapsPickerPageDirections.actionMapsPickerPageToEventOverviewPage2(1, 1)
+        findNavController().navigate(action)
     }
 }
