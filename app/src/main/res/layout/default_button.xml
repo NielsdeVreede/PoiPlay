@@ -1,0 +1,18 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/mulish_semibold"
+        android:letterSpacing="0"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="15dp"
+        android:stateListAnimator="@null"
+        android:text="Klik hier"
+        android:textAllCaps="false"
+        android:textSize="16dp" />
+</LinearLayout>
